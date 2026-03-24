@@ -1,5 +1,7 @@
 # 2026-03-24
 
+- 调整 `lab4/report.md` 的 hazard 分析表述：补充 `BYPASS(EX)` 与 `WB` 日志的时间关系，强化 load-use 的 `EX/MEM` 时序解释，并将 Control Hazard 的默认预测结论改为主要依据实验日志推断。
+- 重新按 GitHub 风格导出 `lab4/report.pdf`，保证 Markdown 与 PDF 交付物同步。
 - 更新 `lab4/report.md`，将 `rg` 检索命令、建议截图段落和三类 hazard 的中文分析草稿直接写入模板，便于按报告逐项截图和填写。
 - 修正 `lab4/src/test.S` 的返回结果写法，不再将 branch 路径结果写入 `result`，而是写入 `0`，以满足 `tohost` 协议中的成功退出条件，避免仿真以失败码结束。
 - 修正 `lab4/src/link.ld` 的 `OUTPUT_ARCH` 写法，将不被 GNU ld 接受的单引号改为双引号，消除链接脚本解析报错。
