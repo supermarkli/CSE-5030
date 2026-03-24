@@ -164,14 +164,17 @@ rg '\[BYPASS\]' output/chipyard.harness.TestHarness.RocketConfig/rv64ui-p-simple
 ### 推荐目录
 
 ```bash
-mkdir -p /home/lzh/CSE5030/lab4/work
-cd /home/lzh/CSE5030/lab4/work
+mkdir -p /home/lzh/CSE5030/lab4/src
+cd /home/lzh/CSE5030/lab4/src
 ```
 
 ### 指令含义
 
 1. `mkdir -p`
    - 创建目录；如果已存在也不会报错
+2. `lab4/src`
+   - 这是当前仓库里约定的源码目录
+   - `test.S`、`link.ld`、后续 `test.elf` 都统一放这里，避免和文档结构冲突
 
 ### 这一步真正该怎么写
 
@@ -287,7 +290,7 @@ file test.elf
 
 ```bash
 cd /home/lzh/CSE5030/chipyard/sims/verilator
-make run-binary-debug BINARY=/home/lzh/CSE5030/lab4/work/test.elf
+make run-binary-debug BINARY=/home/lzh/CSE5030/lab4/src/test.elf
 ```
 
 ### 为什么这么做
@@ -491,11 +494,11 @@ cd /home/lzh/CSE5030
 cd chipyard
 source ./env.sh
 
-cd chipyard/sims/verilator
+cd sims/verilator
 make run-binary-debug BINARY=$RISCV/riscv64-unknown-elf/share/riscv-tests/isa/rv64ui-p-simple -j
 
-mkdir -p /home/lzh/CSE5030/lab4/work
-cd /home/lzh/CSE5030/lab4/work
+mkdir -p /home/lzh/CSE5030/lab4/src
+cd /home/lzh/CSE5030/lab4/src
 
 # 新建 test.S 和 link.ld
 # 写入你的 hazard 测试代码和链接脚本
@@ -512,7 +515,7 @@ riscv64-unknown-elf-gcc \
     -o test.elf
 
 cd /home/lzh/CSE5030/chipyard/sims/verilator
-make run-binary-debug BINARY=/home/lzh/CSE5030/lab4/work/test.elf
+make run-binary-debug BINARY=/home/lzh/CSE5030/lab4/src/test.elf
 
 rg -n 'BYPASS|pc=\[' output/chipyard.harness.TestHarness.RocketConfig/test.out
 ```

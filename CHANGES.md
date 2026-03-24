@@ -1,5 +1,13 @@
 # 2026-03-24
 
+- 更新 `lab4/report.md`，将 `rg` 检索命令、建议截图段落和三类 hazard 的中文分析草稿直接写入模板，便于按报告逐项截图和填写。
+- 修正 `lab4/src/test.S` 的返回结果写法，不再将 branch 路径结果写入 `result`，而是写入 `0`，以满足 `tohost` 协议中的成功退出条件，避免仿真以失败码结束。
+- 修正 `lab4/src/link.ld` 的 `OUTPUT_ARCH` 写法，将不被 GNU ld 接受的单引号改为双引号，消除链接脚本解析报错。
+- 新增 `lab4/src/link.ld`，按 Lab 4 Step 5 提供 RISC-V 链接脚本，统一将程序入口放在 `0x80000000`，并与 `lab4/src/test.S` 配套使用。
+- 新增 `lab4/src/test.S`，按 Lab 4 Step 4 要求构造三类 hazard：普通 Data Hazard、Load-Use Hazard，以及同时包含 taken / not taken 的 Control Hazard，便于后续编译、仿真和日志分析。
+- 更新 `lab4/todo.md` 中的源码目录约定，统一改为 `lab4/src/`，移除与仓库结构冲突的 `lab4/work` 建议，并修正最短路径示例中的 `chipyard/sims/verilator` 相对路径写法。
+- 更新 `lab4/report.md` 为中文报告模板，保留英文术语与 `TODO` 占位，方便直接填写和提交。
+- 按照 Lab 4 Step 2 要求，更新 `chipyard/generators/rocket-chip/src/main/scala/rocket/RocketCore.scala`，在 `ex_pc_valid` 后加入 BYPASS 调试打印逻辑，用于在 Verilator 日志中观察 EX/WB/MEM 三种旁路来源。
 - 更新 `lab4/todo.md` 中的环境初始化路径，修正为从 `chipyard/env.sh` 加载实验环境，避免误写为仓库根目录下不存在的 `env.sh`。
 - 更新根目录 `README.md` 为中文，并补充仓库定位、统一目录结构与跟踪策略说明。
 - 调整 `lab2`、`lab3`、`lab4` 的目录结构：将实验源码整理到 `src/`，将题目材料整理到 `refs/`，并为各 lab 新增中文 `README.md`。
