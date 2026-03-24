@@ -1,0 +1,58 @@
+# === Large engineering repos / nested git repos ===
+/chipyard/
+/NEMU/
+/sustemu_lab/
+/gem5_env/
+
+# === Build artifacts ===
+*.o
+*.a
+*.so
+*.elf
+*.bin
+*.out
+*.log
+*.d
+*.tmp
+
+# === Generated directories ===
+**/build/
+**/output/
+**/generated-src/
+**/target/
+**/m5out/
+**/dist/
+
+# === Tool / env caches ===
+**/.metals/
+**/.bloop/
+**/.ivy2/
+**/.java_tmp/
+**/.conda-env/
+**/.conda-lock-env/
+**/.classpath_cache/
+
+# === Python / misc caches ===
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+
+# === OS / editor junk ===
+.DS_Store
+Thumbs.db
+
+# === Course handout PDFs: ignore by default ===
+/lab2/week2_lab.pdf
+/lab3/cache_lab.pdf
+/lab4/lab4.pdf
+
+# === Optional generated reports ===
+# /lab2/report.pdf
+# /lab3/report.pdf
+# /lab3/report.html
+
+# === Optional assets ignores ===
+# /assets/
+# /lab2/assets/
+# /lab3/assets/
+# /lab4/assets/

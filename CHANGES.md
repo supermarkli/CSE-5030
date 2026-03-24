@@ -1,0 +1,8 @@
+# 2026-03-24
+
+- 新增根目录 `.gitignore`，忽略 `chipyard`、`NEMU`、`sustemu_lab`、`gem5_env` 等工程目录，以及常见构建产物、缓存目录和课程 handout PDF，便于将 `/home/lzh/CSE5030` 作为课程成果仓库管理。
+- 更新 `lab4/note.md`，补充 `RocketCore.scala` 中与本次 lab 直接相关的信号说明，包括 `id_inst(0)`、`ex_reg_inst`、`ex_reg_pc`、`ex_pc_valid`、`id_raddr`、`ex_reg_rs_bypass`、`ex_reg_rs_lsb`、`ex_rs` 的含义与它们如何配合打印 BYPASS 日志。
+- 更新 `lab4/note.md`，补充 Chipyard / Rocket Chip / RocketCore / Verilator 的工程背景，并解释 `Generator.scala`、`DigitalTop.scala`、`ChipTop.scala`、`ConfigFinder.scala` 等关键文件在整体链路中的位置。
+- 新增 `lab4/note.md`，整理 Lab 4 相关概念笔记，覆盖 pipeline、三类 hazard、bypass、stall、branch prediction 与日志阅读方法。
+- 新增 `lab4/todo.md`，按执行顺序拆解本次实验步骤，说明每步做什么、为什么做、命令是什么、命令含义是什么。
+- 新增 `lab4/report.md`，生成可直接填写的实验报告模板，所有待补内容统一使用 `TODO` 占位。
