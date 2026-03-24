@@ -24,25 +24,26 @@
 
 ### 要做什么
 
-进入课程工程目录，并加载环境变量。
+进入 `chipyard` 工程目录，并加载环境变量。
 
 ### 为什么这么做
 
-因为后面要用到 `riscv64-unknown-elf-gcc`、`make`、仿真脚本等工具，通常都依赖 `env.sh` 设置路径。
+因为后面要用到 `riscv64-unknown-elf-gcc`、`make`、仿真脚本等工具，通常都依赖 `chipyard/env.sh` 设置路径。
 
 ### 指令
 
 ```bash
-cd /home/lzh/CSE5030
+cd /home/lzh/CSE5030/chipyard
 source ./env.sh
 ```
 
 ### 指令含义
 
-1. `cd /home/lzh/CSE5030`
-   - 切到课程工程根目录
+1. `cd /home/lzh/CSE5030/chipyard`
+   - 切到 `chipyard` 工程根目录
 2. `source ./env.sh`
    - 在当前 shell 中加载环境变量
+   - 这里加载的是 `chipyard/env.sh`
    - 注意：不能直接 `./env.sh`，否则变量可能不会留在当前终端里
 
 ### 做完如何确认
@@ -487,6 +488,7 @@ rg -n 'BYPASS|pc=\[' output/chipyard.harness.TestHarness.RocketConfig/test.out
 
 ```bash
 cd /home/lzh/CSE5030
+cd chipyard
 source ./env.sh
 
 cd chipyard/sims/verilator

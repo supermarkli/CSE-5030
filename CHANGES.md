@@ -1,5 +1,6 @@
 # 2026-03-24
 
+- 更新 `lab4/todo.md` 中的环境初始化路径，修正为从 `chipyard/env.sh` 加载实验环境，避免误写为仓库根目录下不存在的 `env.sh`。
 - 更新根目录 `README.md` 为中文，并补充仓库定位、统一目录结构与跟踪策略说明。
 - 调整 `lab2`、`lab3`、`lab4` 的目录结构：将实验源码整理到 `src/`，将题目材料整理到 `refs/`，并为各 lab 新增中文 `README.md`。
 - 更新根目录 `.gitignore`，适配 `refs/` 下的课程 handout PDF 忽略规则。
