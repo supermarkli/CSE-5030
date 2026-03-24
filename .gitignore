@@ -42,9 +42,9 @@
 Thumbs.db
 
 # === Course handout PDFs: ignore by default ===
-/lab2/week2_lab.pdf
-/lab3/cache_lab.pdf
-/lab4/lab4.pdf
+/lab2/refs/week2_lab.pdf
+/lab3/refs/cache_lab.pdf
+/lab4/refs/lab4.pdf
 
 # === Optional generated reports ===
 # /lab2/report.pdf
