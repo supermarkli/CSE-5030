@@ -1,0 +1,32 @@
+# 2026-04-07
+
+- 按题面重新整理 `report.md` 的题号映射，补回 `Question 2`，避免原稿里从 `Question 1` 直接跳到 `Question 3`
+- 为 `report.md` 补充实验简介和默认 OOO 配置表，让报告更完整，但继续保留中文短句风格，避免扩成模板腔
+- 在不改数据结论的前提下重写 `Q2 / Q3 / Q5` 的衔接句，保留原有判断，弱化机器味过重的摘要式表达
+- 将 `report.md` 的 `Question 4` 口径改为与本地 `memlat.c` 实际实验流程一致：明确说明原始顺序存在 OOO 计数复用现象，已改为先测 `bench_serial`、再测 `bench_parallel` 并基于复测结果填写报告
+- 根据 review 收紧 `report.md` 的 `Q2 / Q3 / Q5`：删除硬拗题意和过强结论，保留数据不变，把表述改成更短、更直接的人工写作风格
+- 继续精简 `report.md` 的 Q2 / Q3 / Q5 措辞，删除偏模板化和偏 AI 风格的连接句，保留原有论证结构与数据
+- 根据 review 结果重写 `report.md` 的 `Question 2`，正面说明“依赖结构上的理论预期”与“当前实测 IPC 未明显拉开”的冲突，避免继续回避题面要求
+- 收紧 `Question 3` 的结论强度，保留 `diamond` / `chain` 的依赖分析与理论最短周期计算，但将最终判断改为“方向上略符合预期、差异很小、证据不足以下强结论”
+- 改写 `Question 5` 的收敛表述，明确区分“当前数据观测到的约 `1.4x` 收敛值”和“受 `2` 个 `LSU` 约束的理论上界量级接近 `2x`”
+- 根据 `memlat` 在 `LAT_L2_HIT = 8 / 20 / 40` 下的实测结果补全 `report.md` 的 `Question 4` 表格，并补写 `Question 5` 的 speedup 收敛分析
+- 在 `Question 5` 中明确指出收敛上限受 `LSU units = 2` 约束，当前数据已表现出向约 `1.4+` 区间收敛的趋势
+- 参照 `todo.md` 的 step 9/10 指南细化 `Question 3` 正文，按“依赖关系 -> 理论最短值 -> 与实测对比 -> 结论”重写 `diamond` / `chain` 分析
+- 根据 `Q2/tomasulo` 的实测结果补全 `report.md` 的 `Question 3`，填入 `diamond` / `chain` 的 measured cycles/iteration、理论最短值以及依赖结构分析
+- 将 `Question 3` 表头改为 `Cycles/Iteration`，使表格和题目要求的理论最短周期比较口径一致
+- 继续精简 `report.md` 的 `Question 2`，合并重复说明，使“理论分析”和“当前实测”落在同一段里，减少表述重复
+- 精修 `report.md` 的最终提交表述：删除 step 1 到 step 5 的自查说明，只保留题目要求提交的截图、表格和分析内容
+- 收紧 `Question 2` 的文字，去掉偏题的模拟器内部统计展开，使答案更贴合题面要求的依赖链、critical path 和 scheduler 限制分析
+- 更新 `report.md`，补充 step 1 到 step 5 的完成性检查，明确截图、编译产物和 Q1 复跑结果都已可复核
+- 收紧 `Question 2` 的措辞，把“OOO IPC 明显更高”改成“理论上更容易更高”，避免与当前实测结果冲突
+- 新增 `note.md`，用中文整理本次 Out-of-Order lab 的核心概念，覆盖 `in-order`、`OOO`、`IPC/CPI`、`ILP`、`critical path`、`Tomasulo`、`MLP`、`L1/L2 latency` 等内容，保留关键英文术语
+- 新增 `todo.md`，按实验问题顺序拆出完整操作流程，逐步说明每一步要做什么、为什么做、执行什么指令、各指令的含义，以及每题应记录的数据
+- 新增 `report.md`，整理成可直接填写提交的中文模板，按 `Question 1` 到 `Question 5` 分区，结果与分析统一用 `TODO` 占位
+- 保留并使用 `ooo_lab.pdf` 的英文题目术语，整体文档风格参照已有 `lab2` / `lab4` 目录格式，便于后续统一管理和提交
+- 根据已完成的 Q1 实验输出，补充 `report.md` 中 `Question 1` 的说明，并填写 `Question 2` 的表格与“实测结果 + 理论依赖分析”版本文字，避免把当前未拉开差距的实测数据误写成题面预期结论
+- 精简 `report.md` 结构，只保留题目明确要求提交的部分：截图、结果表格、书面答案；删除观察提示、额外结论小节和答题骨架
+
+- 调整 `Makefile` 的 LLVM / C++ 编译配置：不再写死 `llvm-config-11`，改为优先使用可用的 `llvm-config-17`，否则回退到系统 `llvm-config`
+- 同步将 C++ 标准从 `c++14` 调整为 `c++17`，与参考目录 `sustemu_lab` 的构建配置保持一致
+- 链接阶段改为通过 `$(LLVM_CONFIG) --libs` 动态获取 LLVM 库，避免因本机 LLVM 版本不同导致构建失败
+- 按 `sustemu_lab` 的源码配置补充 `src/monitor/disasm.cc` 对 `llvm/MC/MCSubtargetInfo.h` 的包含，修复 LLVM 17 下 `MCSubtargetInfo` 不完整类型导致的编译错误
