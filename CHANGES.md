@@ -1,3 +1,9 @@
+# 2026-04-07
+
+- 重写 `/home/lzh/projects/cutrace/lzh-md/report.md`，整理为 Lab 5 中文报告版本，并将 `Q4/Q5` 更新为基于本地复测的可信 `memlat` 数据与测量说明。
+- 精简 `/home/lzh/projects/cutrace/lzh-md/report.md` 的措辞，删除偏过程化和偏模板化表述，保留必要的异常说明与实验结论。
+- 调整 `SUSTemu/ooo_lab/Q3/memlat/memlat.c` 中 Q3 正式测量顺序，改为先执行 `bench_serial` 再执行 `bench_parallel`，用于规避 `LAT_L2_HIT >= 20` 时第二个 benchmark 统计值复用前一项结果的问题，并据此复测 OOO 数据。
+
 # 2026-03-24
 
 - 调整 `lab4/report.md` 的 hazard 分析表述：补充 `BYPASS(EX)` 与 `WB` 日志的时间关系，强化 load-use 的 `EX/MEM` 时序解释，并将 Control Hazard 的默认预测结论改为主要依据实验日志推断。

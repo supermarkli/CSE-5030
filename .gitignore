@@ -3,6 +3,7 @@
 /NEMU/
 /sustemu_lab/
 /gem5_env/
+/SUSTemu/
 
 # === Build artifacts ===
 *.o
