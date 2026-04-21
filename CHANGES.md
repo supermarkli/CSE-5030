@@ -1,3 +1,8 @@
+# 2026-04-14
+
+- 将 `/home/lzh/CSE5030/gem5_package.tar.gz` 解压到仓库根目录，新增 `gem5_package/`，其中包含 `build/RISCV_MOESI/gem5.opt`、`configs/`、`libs/` 与 `lab7/` 配套文件。
+- 将 `gem5_package/lab7/false_sharing_mt.c` 与 `gem5_package/lab7/riscv_moesi_riscv.py` 复制到 `lab7/`，补齐 Lab 7 所需源码与 gem5 配置脚本。
+
 # 2026-04-07
 
 - 重写 `/home/lzh/projects/cutrace/lzh-md/report.md`，整理为 Lab 5 中文报告版本，并将 `Q4/Q5` 更新为基于本地复测的可信 `memlat` 数据与测量说明。

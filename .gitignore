@@ -4,9 +4,11 @@
 /sustemu_lab/
 /gem5_env/
 /SUSTemu/
+/gem5_package/
 
 # === Build artifacts ===
 *.o
+*.gz
 *.a
 *.so
 *.elf
