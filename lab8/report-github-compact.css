@@ -1,0 +1,151 @@
+/* GitHub Markdown Style - Compact A4 PDF */
+@page {
+  size: A4;
+  margin: 10mm 10mm 10mm 10mm;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #24292f;
+  background-color: #ffffff;
+  padding: 12px 14px;
+  max-width: none;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de;
+}
+
+h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de;
+}
+
+h3 { font-size: 1.25em; }
+h4 { font-size: 1em; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+}
+
+pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #57606a;
+  border-left: 0.25em solid #d0d7de;
+  margin: 0 0 16px 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  margin-bottom: 16px;
+}
+
+table th, table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de;
+}
+
+table tr {
+  background-color: #ffffff;
+  border-top: 1px solid #d8dee4;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #ffffff;
+}
+
+hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #d0d7de;
+  border: 0;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-left: 2em;
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+.hljs {
+  background: #f6f8fa;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6e7781;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #cf222e;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: #0a3069;
+}
+
+.hljs-number {
+  color: #0550ae;
+}
+
+.hljs-function {
+  color: #8250df;
+}

@@ -1,0 +1,23 @@
+# 2026-04-21
+
+- 使用 `markdown-to-pdf` skill 重新导出 `lab8/report.pdf` 并收紧页面留白：新增本地样式文件 `lab8/report-github-compact.css`，保持 GitHub Markdown 风格不变，只把 A4 `@page` 边距和 `body` 的 `padding/max-width/margin` 调小，再按该样式重新生成 PDF，解决左右上下留白过大的问题。
+- 根据 review 结果再次收紧 `lab8/report.md` 的题面对齐表述：补充说明 `Q1` 实际是通过修改 `FLAGS` 后重跑 `make run` 来完成 in-order 试验；将 `Q3` 中关于 store buffer drain latency 的依据改写为“题面 + 模拟器实现”分离表述；并在 `Q5` 明确指出 PDF 最后一行把正确结果误写成 `N_ITER`，报告按源码和实测采用 `2 * N_ITER = 4000`。
+- 对照 `lab8.pdf` 的命令写法，将 `lab8/report.md` 中所有实验命令从本机绝对路径改回题面同款相对路径：统一使用 `cd order_lab/Q1`、`cd order_lab/Q2`、`cd order_lab/Q3`，避免报告出现与题面无关的本地目录细节。
+- 对照 `lab8.pdf` 复查 `report.md` 的题面对齐情况后，再次去掉几处明显冗余：删除顶部 `Local run note`，删除 `Q1/Q2` 中由命令和数据已能表达的 `Run mode` / `Result summary` 行，并删除 `Q5` 中重复于实际计数结果的 `Verification conclusion`，保留题面真正要求的结果、解释、时间线与代码片段。
+- 参考 `lab7/report.md` 的抬头格式，补全 `lab8/report.md` 顶部身份信息：将 `ID` 填为 `12532588`，将 `NAME` 填为 `Li Zihao`，使 `lab8` 报告与既有英文风格报告保持一致。
+- 运行 `order_lab/Q3` 的 `make run-fence` 完成 `Question 5`：实测加两道 fence 后 `Expected = 4000`、`Actual = 4000`、`Lost updates = 0`；同步补全 `report.md` 中 `Q5` 的验证结果，以及“两道 fence 各自防什么重排、为什么单个 fence 不够”的中文分析。
+- 运行 `order_lab/Q3` 的 `make run` 完成 `Question 4`：实测 broken Peterson 版本在 `USE_FENCE=0` 下输出 `Expected = 4000`、`Actual = 2000`、`Lost updates = 2000`；同步补全 `report.md` 中 `Q4` 的结果、`lock()` 失效步骤说明、双核同时穿过 spin-wait 的 ASCII 时间线，以及为什么互斥失效后又退化成非原子 `counter++` 的中文分析。
+- 运行 `order_lab/Q2` 的 `make run` 完成 `Question 3`：实测 `Expected = 2000`、`Actual = 1000`、`Lost updates = 1000`；同步补全 `report.md` 中 `Q3` 的结果、计算过程、非原子 `read-modify-write` 丢失更新原理，以及“为什么损失量接近 `N_ITER`”的中文分析。
+- 运行 `Q1` 的 `make run-fence` 完成 `Question 2`：实测 `WITH fence rw,rw` 下结果为 `Violations = 0`、`Rate = 0%`、`Trials = 200`；同步补全 `report.md` 中 `Q2` 的结果、中文原理解释与可直接提交的 ASCII happens-before 时间线。
+- 重新实跑 `Q1` 两组关键配置并收尾 `report.md` 的 `Question 1`：确认默认 `--dual --ooo --bpred -b` 下结果仍为 `38/200 = 19%`，而改成 `--dual --inorder --bpred -b` 后结果为 `0/200 = 0%`；据此把 `Q1` 的 in-order 试验记录补成完整可交版本，并把分析文字改得更贴近题目对 `OOO + TSO` 与 `store buffer` 的提问。
+- 根据本机修复后的 `SUSTemu_order_main` 重新运行 `Q1` 的 `in-order` 配置，确认把 `FLAGS` 改为 `--dual --inorder --bpred -b` 后输出为 `Violations = 0`、`Rate = 0%`、`No violation (SC behavior)`；同步补全 `report.md` 中 `Question 1` 的 in-order 命令、结果与中英文分析。
+- 根据用户提供的首次 `Q1 make run` 实测结果，填写 `report.md` 中 `Question 1` 的已知输出：补入 `Trials = 200`、`Violations = 38`、`Rate = 19%`、`WITHOUT fence` 与 `TSO VIOLATION observed`，并补充对应的中文分析说明；其余未实测部分继续保留 `TODO`。
+- 将 `report.md` 中的命令统一到已经验证可运行的单目录环境：补充“先在 `/opt/ext1/lzh/CSE5030/SUSTemu_order_main` 执行一次 `make`”的前置说明，并把 `Q1` 到 `Q5` 的命令改为指向 `/opt/ext1/lzh/CSE5030/SUSTemu_order_main/labs/order_lab/...` 的真实路径。
+- 在 `SUSTemu_order_main` 内成功编出 `build/sustemu` 后，回收 `todo.md` 中临时的“双目录 workaround”：删除 `SIM=/opt/ext1/lzh/CSE5030/SUSTemu/build/sustemu` 覆盖写法，改回单目录工作流，并补充“先在 `SUSTemu_order_main` 根目录执行一次 `make`”的前置步骤。
+- 根据本机实际目录修正 `todo.md` 中的 lab8 运行命令：明确 `order_lab` 源码位于 `/opt/ext1/lzh/CSE5030/SUSTemu_order_main/labs/order_lab`，而当前可直接运行的 simulator 位于 `/opt/ext1/lzh/CSE5030/SUSTemu/build/sustemu`，因此将 `make run` / `make run-fence` 改为带 `SIM=/opt/ext1/lzh/CSE5030/SUSTemu/build/sustemu` 覆盖参数的写法，并补充原报错原因说明。
+- 精简 `report.md` 以严格对齐 `lab8.pdf`：删除 `Environment and Path Check` 与 `Summary` 两个冗余章节，移除绝对路径，仅保留 `Q1` 到 `Q5` 题面真正要求的内容，同时保留 `Q5` 的 fence 代码片段。
+- 根据用户反馈增强 `note.md` 的零基础程度：新增“读前基础词”小节，补充 `CPU`、`core`、`instruction`、`load`、`store`、`register`、`shared memory`、`cache`、`pipeline`、`OOO core`、`in-order core`、`atomic`、`mutex`、`critical section` 等首次出现概念的直白定义，并在正文首次出现处补充解释。
+- 将 `todo.md` 和 `report.md` 中原先的 `/path/to/SUSTemu` 占位路径替换为已验证的真实路径 `/opt/ext1/lzh/CSE5030/SUSTemu_order_main/labs/order_lab`，并在文档中说明该目录来自远端最新 `origin/main` 的独立 worktree。
+- 新增 `note.md`，按零基础视角整理 `Memory Ordering Lab` 的核心概念，覆盖 `SC`、`TSO`、`Store Buffer`、`Store-Load Reordering`、`Dekker litmus test`、`Lost Update`、`Peterson's mutex`、`fence rw, rw`、`happens-before` 等内容，并补充整体 ASCII 流程图。
+- 新增 `todo.md`，按题面要求把 `Q1` 到 `Q5` 的实验步骤拆解为可执行清单，逐步说明每一步做什么、为什么这么做、对应指令是什么、每条指令的含义是什么，并标出当前本地仓库里 `order_lab` 路径仍需先确认。
+- 新增 `report.md`，整理成中文提交模板，覆盖 `Question 1` 到 `Question 5` 的全部提交内容，并将运行结果、问答分析、时间线与路径信息统一保留为 `TODO` 占位。
