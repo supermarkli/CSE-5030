@@ -5,6 +5,8 @@
 /gem5_env/
 /SUSTemu/
 /gem5_package/
+/tools/
+/ventus-gpgpu-isa-simulator/
 
 # === Build artifacts ===
 *.o
